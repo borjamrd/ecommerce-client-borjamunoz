@@ -12,6 +12,10 @@ export function useFetch(url, method, body) {
         fetch(url, {
             method: 'GET',
             body: JSON.stringify(body),
+            headers: {
+                "Content-Type": "application/json"
+            },
+            signal: abortController.signal
         })
             .then((resp) => resp.json())
             .then((json) => setData(json))

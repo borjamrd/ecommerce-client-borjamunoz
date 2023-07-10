@@ -17,6 +17,7 @@ const Catalog = () => {
             {data ? data?.map((product, index) =>
             (
                 <ProductCard
+                    key={product.id}
                     id={product.id}
                     brand={product.brand}
                     model={product.model}
