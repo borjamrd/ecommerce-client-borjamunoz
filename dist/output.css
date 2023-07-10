@@ -941,3 +941,27 @@ html {
     opacity: 1;
   }
 }
+
+.flex {
+  display: flex;
+}
+
+.w-2\/5 {
+  width: 40%;
+}
+
+.w-3\/5 {
+  width: 60%;
+}
+
+@media (min-width: 640px) {
+  .sm\:w-full {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:w-full {
+    width: 100%;
+  }
+}
