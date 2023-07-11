@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export function useFetch(url, method, body) {
+export function useUpdateCart() {
     const [data, setData] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const [error, setError] = useState(Error)
     const [controller, setController] = useState(null)
 
-    useEffect(() => {
-        fetchData()
-    }, [])
 
-    const fetchData = () => {
+
+    const fetchData = (url, method, body) => {
+        setLoading(true)
         const abortController = new AbortController();
         setController(abortController);
         fetch(url, {
@@ -22,7 +21,7 @@ export function useFetch(url, method, body) {
             signal: abortController.signal
         })
             .then((resp) => resp.json())
-            .then((json) => setData(json))
+            .then((json) => { setData(json) })
             .catch((error) => {
                 if (error.name === 'AbortError') {
                     console.log('Cancel request')

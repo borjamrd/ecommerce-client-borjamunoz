@@ -4,12 +4,11 @@ import { useFetch } from '../hooks/useFecth'
 import Largeheading from '../components/ui/Largeheading'
 import ProductDescription from '../components/ProductDescription'
 import ProductActions from '../components/ProductActions'
-
 function Product() {
 
     const params = useParams()
-    const { data, loading, error, handleCancelRequest } = useFetch(`https://itx-frontend-test.onrender.com/api/product/${params.id}`, 'GET')
-    console.log(data)
+    const { data, loading, error } = useFetch(`https://itx-frontend-test.onrender.com/api/product/${params.id}`, 'GET')
+
 
     return (
         <div>
@@ -29,7 +28,6 @@ function Product() {
                 </div>
 
             </div> : (<div>No hay información de producto</div>)}
-
         </div >
 
     )

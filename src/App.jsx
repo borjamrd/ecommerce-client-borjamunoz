@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import DefaultLayout from "./containers/DefaultLayout";
 import "./index.css";
 import NoMatch from "./pages/NoMatch";
+import { CartProvider } from "./context/CartContext";
 
 const Catalog = React.lazy(() => import('./pages/Catalog'))
 const Product = React.lazy(() => import('./pages/Product'))
@@ -18,21 +19,24 @@ const Product = React.lazy(() => import('./pages/Product'))
 export default function App() {
   return (
     <>
+      <CartProvider>
+        <BrowserRouter>
 
-      <BrowserRouter>
-        <DefaultLayout>
+          <DefaultLayout>
 
-          <Header />
-          <Breadcrumbs />
-          <Suspense fallback={<div>...loading</div>} >
-            <Routes>
-              <Route exact path="/" element={<Catalog />} />
-              <Route path="/:id" element={<Product />} />
-              <Route path="*" element={<NoMatch />} />
-            </Routes>
-          </Suspense>
-        </DefaultLayout>
-      </BrowserRouter>
+            <Header />
+            <Breadcrumbs />
+            <Suspense fallback={<div>...loading</div>} >
+              <Routes>
+                <Route exact path="/" element={<Catalog />} />
+                <Route path="/:id" element={<Product />} />
+                <Route path="*" element={<NoMatch />} />
+              </Routes>
+            </Suspense>
+          </DefaultLayout>
+        </BrowserRouter>
+
+      </CartProvider >
     </>
 
 

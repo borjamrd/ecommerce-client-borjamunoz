@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-
+import { CartContext } from '../context/CartContext'
 const Header = () => {
+
+    const { products, emptyCart } = useContext(CartContext);
+    const handleEmpty = () => {
+        emptyCart()
+    }
+
     return (
-        <div>
+        <div style={{
+            display: "flex", justifyContent: 'center'
+        }}>
             <div>
-                <Link to="/">Home</Link>
+                <Link to="/">imagen a home</Link>
             </div>
             <div>
-                Stored products
+                Stored products: {products?.length}
+                <button onClick={() => handleEmpty()}>Vaciar carrito</button>
             </div>
 
         </div>
