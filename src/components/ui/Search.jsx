@@ -2,7 +2,7 @@ import React from 'react'
 
 const Search = ({ placeholder, handleSearch }) => {
     return (
-        <input onChange={(e) => handleSearch(e)} type="text" placeholder={placeholder} className="input w-full max-w-xs" />
+        <input onChange={(e) => handleSearch(e)} type="text" placeholder={placeholder} className="input input-bordered input-info w-full max-w-xs" />
     )
 }
 

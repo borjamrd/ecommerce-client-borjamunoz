@@ -7,6 +7,7 @@ const Breadcrumbs = () => {
     const location = useLocation()
     const navigate = useNavigate()
     let currentLink = ''
+    console.log(location)
     const crumbs = location.pathname.split('/')
         .filter(crumb => crumb !== '')
         .map((crumb) => {

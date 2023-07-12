@@ -1,43 +1,39 @@
 import React, { useEffect, useState } from 'react'
-import ProductCard from '../components/ProductCard'
-import Largeheading from '../components/ui/Largeheading'
-import { useFetch } from '../hooks/useFecth'
-import Search from '../components/ui/Search'
 import CatalogSection from '../components/CatalogSection'
+import Largeheading from '../components/ui/Largeheading'
+import Search from '../components/ui/Search'
+import { useFetch } from '../hooks/useFecth'
+import Alert from '../components/ui/Alert'
 
 const Catalog = () => {
 
-
-    const { data, loading, error } = useFetch('https://itx-frontend-test.onrender.com/api/product',)
-
+    const { data, loading, error } = useFetch('https://itx-frontend-test.onrender.com/api/product', 'GET')
     const [searchedItems, setsearchedItems] = useState(null)
-
     useEffect(() => {
+        console.log(data)
         setsearchedItems(data)
-        return () => {
-        }
     }, [data])
-
-
     const handleFilter = (event) => {
-        const itemSearched = event.target.value
-        if (itemSearched) {
+        const textSearched = event.target.value
+        if (textSearched) {
             let items
-            items = data?.filter(product => product?.brand?.toLowerCase() === itemSearched?.toLowerCase())
+            items = data?.filter(product =>
+                product.brand.toLowerCase().includes(textSearched.toLowerCase()) ||
+                product.model.toLowerCase().includes(textSearched.toLowerCase())
+            )
             setsearchedItems(items)
         } else {
             setsearchedItems(data)
         }
-
     }
 
     return (
         <div className='flex flex-col items-center'>
-            <Largeheading>Catalog</Largeheading>
+            <Largeheading>Catálogo</Largeheading>
             <div className='mb-4'>
                 <Search handleSearch={(e) => handleFilter(e)} placeholder={'Buscar'}></Search>
             </div>
-            {error && (<div>Error</div>)}
+            {error && (<Alert message={'Error al cargar datos'} />)}
             <CatalogSection loading={loading} searchedItems={searchedItems} />
 
         </div>

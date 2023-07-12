@@ -1,21 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { useFetch } from '../hooks/useFecth'
 import Largeheading from '../components/ui/Largeheading'
 import ProductDescription from '../components/ProductDescription'
 import ProductActions from '../components/ProductActions'
 import PlaceholderProduct from '../components/PlaceholderProduct'
+import Alert from '../components/ui/Alert'
 function Product() {
 
     const params = useParams()
+
     const { data, loading, error } = useFetch(`https://itx-frontend-test.onrender.com/api/product/${params.id}`, 'GET')
+
+
 
     return (
         <div>
 
             {loading && (<PlaceholderProduct />)}
-            {error && (<div>Error</div>)}
-            {data && <div>
+            {error && (<div>
+                <Alert message={'Error al cargar datos'} />
+            </div>)}
+            {data && !error && <div>
                 <Largeheading>{data.brand} | {data.model}</Largeheading>
                 <div className='flex lg:flex-row flex-col'>
                     <div className="lg:w-2/5">
