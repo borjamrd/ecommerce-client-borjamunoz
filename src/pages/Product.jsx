@@ -4,6 +4,7 @@ import { useFetch } from '../hooks/useFecth'
 import Largeheading from '../components/ui/Largeheading'
 import ProductDescription from '../components/ProductDescription'
 import ProductActions from '../components/ProductActions'
+import PlaceholderProduct from '../components/PlaceholderProduct'
 function Product() {
 
     const params = useParams()
@@ -12,21 +13,24 @@ function Product() {
     return (
         <div>
 
-            {loading && (<div>Loading</div>)}
+            {loading && (<PlaceholderProduct />)}
             {error && (<div>Error</div>)}
-            {data ? <div>
+            {data && <div>
                 <Largeheading>{data.brand} | {data.model}</Largeheading>
-                <div className='flex'>
-                    <div className="w-2/5 md:w-full">
-                        <img src={data.imgUrl} alt={data.model} />
+                <div className='flex lg:flex-row flex-col'>
+                    <div className="lg:w-2/5">
+                        <div className='p-2 sm: mb-4 rounded-lg bg-white w-fit'>
+                            <img className='h-80' src={data.imgUrl} alt={data.model} />
+                        </div>
+
                     </div>
-                    <div className='w-3/5 md:w-full'>
+                    <div className='lg:w-3/5 ps-4 border-s border-slate-100'>
                         <ProductDescription product={data} />
                         <ProductActions product={data} />
                     </div>
                 </div>
 
-            </div> : (<div>No hay información de producto</div>)}
+            </div>}
         </div >
 
     )

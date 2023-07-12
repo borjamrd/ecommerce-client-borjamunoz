@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Icons } from './ui/Icons'
 
 const Breadcrumbs = () => {
 
@@ -11,7 +12,7 @@ const Breadcrumbs = () => {
         .map((crumb) => {
             currentLink = + `/${crumb}`
             return (
-                <div className='crumb' key={crumb}>
+                <div className='ms-2 btn btn-xs btn-neutral' key={crumb}>
                     <Link to={currentLink}>/ {crumb}</Link>
                 </div>
             )
@@ -19,8 +20,13 @@ const Breadcrumbs = () => {
 
 
     return (
-        <div className='mx-auto flex max-w-7xl items-center px-6 py-2 rounded lg:px-8 bg-slate-700'>
-            <button onClick={() => navigate(-1)}>Back</button>
+        <div className='mx-auto flex max-w-7xl items-center px-6 py-2 rounded-lg lg:px-8 bg-slate-800'>
+            <button className="btn btn-xs" onClick={() => navigate(-1)}>
+                <Icons.ChevronLeft />
+
+                Atrás</button>
+
+
             {crumbs}
         </div>
     )

@@ -10,14 +10,15 @@ const ProductDescription = ({ product }) => {
         { title: 'RAM', value: 'ram' },
         { title: 'Sistema Operativo', value: 'os' },
         { title: 'Resolución', value: 'displayResolution' },
-        { title: 'Batería', value: 'primaryCamera' },
-        { title: 'Cámara', value: 'brand' },
+        { title: 'Batería', value: 'battery' },
+        { title: 'Cámara primaria', value: 'primaryCamera' },
+        { title: 'Cámara secundaria', value: 'secondaryCamera' },
         { title: 'Dimensiones', value: 'dimentions' },
         { title: 'Peso', value: 'weight' },
     ]
     const checkArray = (item) => {
         if (Array.isArray()) {
-            return item.map(subitem => (<span>{subitem}</span>))
+            return item.map((subitem, i) => (<span key={i}>{subitem}</span>))
         } else {
             return item
         }
@@ -25,7 +26,7 @@ const ProductDescription = ({ product }) => {
 
     const descriptionItems = descriptionTitles.map((desc, i) => {
         if (product?.[desc.value]) {
-            return <li key={i}>{desc.title}: <span>{checkArray(product?.[desc.value])}</span></li>
+            return <li key={i}><span className='font-semibold text-white'>{desc.title}</span>: <span>{checkArray(product?.[desc.value])}</span></li>
         }
         return null
     })

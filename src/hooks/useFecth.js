@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
 
 export function useFetch(url, method, body) {
+
+    const productList = JSON.parse(localStorage.getItem('productList') || null)
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [controller, setController] = useState(null)
 
     useEffect(() => {
+
         fetchData()
+
     }, [])
+
+    const saveData = (dataFetched) => {
+        localStorage.setItem('productList', JSON.stringify(dataFetched));
+        setData(dataFetched)
+    }
 
     const fetchData = () => {
         const abortController = new AbortController();
@@ -22,7 +31,7 @@ export function useFetch(url, method, body) {
             signal: abortController.signal
         })
             .then((resp) => resp.json())
-            .then((json) => setData(json))
+            .then((json) => { saveData(json) })
             .catch((error) => {
                 if (error.name === 'AbortError') {
                     console.log('Cancel request')
