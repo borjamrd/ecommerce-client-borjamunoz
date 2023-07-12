@@ -10,15 +10,15 @@ const Cart = () => {
         <div>
             {products?.length > 0 ? products?.map((product, i) =>
 
-                <div key={i} className='p-2 m-2 flex border-b-slate-100'>
-                    <div className='w-2/5'>
+                <div key={i} className='p-4 mx-2 my-1 rounded-lg flex transition hover:bg-gray-800'>
+                    <div className='w-1/5'>
                         <div className='p-2 rounded-lg bg-white w-fit'>
                             <img className='max-h-16' src={product.imgUrl} alt={product.model} />
                         </div>
                     </div>
-                    <div className='w-2/5 flex flex-col'>
-                        <span>{product.brand} | {product.model}</span>
-                        <span className='text-xl font-semibold'>{product.price ? product.price + '€' : ''} </span>
+                    <div className='w-4/5 flex flex-col'>
+                        <span className='text-xl font-semibold border-b border-white'>{product.brand} | {product.model}</span>
+                        <span className='text-3xl text-white font-semibold'>{product.price ? product.price + '€' : ''} </span>
                     </div>
                 </div>
             ) : <div>No hay productos</div>}

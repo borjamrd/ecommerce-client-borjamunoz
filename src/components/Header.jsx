@@ -26,7 +26,7 @@ const Header = () => {
                         {products?.length > 0 && <div className="badge badge-info"> {products?.length}</div>}
                     </button>
                     <dialog id="cartModal" className="modal">
-                        <form method="dialog" className="modal-box w-11/12 max-w-5xl">
+                        <form method="dialog" className="modal-box w-11/12 max-w-2xl">
                             <h3 className="font-bold text-lg">Carrito</h3>
                             <div>
                                 <Cart></Cart>
