@@ -6,7 +6,6 @@ import { useFetchProducts } from '../hooks/useFetchProducts'
 import Alert from '../components/ui/Alert'
 
 const Catalog = () => {
-
     const { data, loading, error } = useFetchProducts('https://itx-frontend-test.onrender.com/api/product', 'GET',)
     const [searchedItems, setsearchedItems] = useState(null)
 

@@ -27,6 +27,7 @@ const ProductActions = ({ product }) => {
             setData(null)
         }
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, products, isSaved])
 
     const addProduct = () => {
@@ -48,7 +49,7 @@ const ProductActions = ({ product }) => {
                         id='color'
                         defaultValue={selectedColor}
                         onChange={(e) => setselectedColor({ code: e.target.value })}
-                        className="select w-full max-w-xs select-xs">
+                        className="select max-w-xs select-xs">
                         <option key={'colors'} disabled>Colors</option>
                         {product?.options?.colors?.map((color, i) => <option key={i} value={color.code}>{color.name}</option>)}
 
@@ -60,7 +61,7 @@ const ProductActions = ({ product }) => {
                     </label> <select
                         id='storage'
                         defaultValue={selectedStorage}
-                        onChange={(e) => setselectedStorage({ code: e.target.value })} className="select w-full max-w-xs select-xs">
+                        onChange={(e) => setselectedStorage({ code: e.target.value })} className="select max-w-xs select-xs">
                         <option key={'storages'} disabled>Storages</option>
                         {product?.options?.storages?.map((stg, i) => <option key={i}>{stg.name}</option>)}
                     </select>

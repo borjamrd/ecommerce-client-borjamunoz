@@ -8,7 +8,7 @@ const Cart = () => {
     }
     return (
         <div>
-            {products?.map((product, i) =>
+            {products?.length > 0 ? products?.map((product, i) =>
 
                 <div key={i} className='p-2 m-2 flex border-b-slate-100'>
                     <div className='w-2/5'>
@@ -21,10 +21,10 @@ const Cart = () => {
                         <span className='text-xl font-semibold'>{product.price ? product.price + '€' : ''} </span>
                     </div>
                 </div>
-            )}
-            <button onClick={() => handleEmpty()} className="btn btn-sm btn-ghost">
+            ) : <div>No hay productos</div>}
+            {products?.length > 0 && <button onClick={() => handleEmpty()} className="btn btn-sm btn-ghost">
                 Vaciar carrito
-            </button>
+            </button>}
         </div>
     )
 }
