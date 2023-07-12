@@ -2,7 +2,7 @@ import React from 'react'
 
 const Largeheading = ({ children }) => {
     return (
-        <h1 className='text-slate-200 text-3xl font-bold mb-4'>{children}</h1>
+        <h1 className='text-slate-300 text-3xl font-bold mb-7'>{children}</h1>
     )
 }
 

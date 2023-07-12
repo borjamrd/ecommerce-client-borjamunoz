@@ -8,7 +8,6 @@ const storageExpired = () => {
     } else {
         if (now - setupTime > hours * 60 * 60 * 1000) {
             localStorage.clear()
-            console.log('cleared!')
             localStorage.setItem('setupTime', now);
         }
     }

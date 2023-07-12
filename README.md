@@ -1,4 +1,21 @@
-# RESUMEN
+## Scripts
+Iniciar el proyecto:
+`npm start`. Abrir http://localhost:3000 para ver en tu navegador.
+
+
+_ _ _
+Iniciar test:
+`npm run test`
+_ _ _
+Compilar:
+`npm run build`
+_ _ _
+Iniciar linter:
+`npm run lint`
+
+
+
+## Objetivos
 
 Esta prueba consiste en la creación de una mini-aplicación para comprar dispositivos moviles.
 -  La aplicación tendrá únicamente dos vistas:

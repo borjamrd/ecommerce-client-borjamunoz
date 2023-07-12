@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useFetch(url, method, body) {
+export function useFetchProduct(url, method, body) {
 
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -10,6 +10,7 @@ export function useFetch(url, method, body) {
 
     useEffect(() => {
         fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const saveData = (dataFetched) => {

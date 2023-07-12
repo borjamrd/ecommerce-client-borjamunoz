@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react'
 import CatalogSection from '../components/CatalogSection'
 import Largeheading from '../components/ui/Largeheading'
 import Search from '../components/ui/Search'
-import { useFetch } from '../hooks/useFecth'
+import { useFetchProducts } from '../hooks/useFetchProducts'
 import Alert from '../components/ui/Alert'
 
 const Catalog = () => {
 
-    const { data, loading, error } = useFetch('https://itx-frontend-test.onrender.com/api/product', 'GET')
+    const { data, loading, error } = useFetchProducts('https://itx-frontend-test.onrender.com/api/product', 'GET',)
     const [searchedItems, setsearchedItems] = useState(null)
+
     useEffect(() => {
-        console.log(data)
         setsearchedItems(data)
     }, [data])
+
     const handleFilter = (event) => {
         const textSearched = event.target.value
         if (textSearched) {
@@ -30,7 +31,7 @@ const Catalog = () => {
     return (
         <div className='flex flex-col items-center'>
             <Largeheading>Catálogo</Largeheading>
-            <div className='mb-4'>
+            <div className='mb-7'>
                 <Search handleSearch={(e) => handleFilter(e)} placeholder={'Buscar'}></Search>
             </div>
             {error && (<Alert message={'Error al cargar datos'} />)}

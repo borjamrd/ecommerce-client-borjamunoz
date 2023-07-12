@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams } from 'react-router'
-import { useFetch } from '../hooks/useFecth'
-import Largeheading from '../components/ui/Largeheading'
-import ProductDescription from '../components/ProductDescription'
-import ProductActions from '../components/ProductActions'
 import PlaceholderProduct from '../components/PlaceholderProduct'
+import ProductActions from '../components/ProductActions'
+import ProductDescription from '../components/ProductDescription'
 import Alert from '../components/ui/Alert'
+import Largeheading from '../components/ui/Largeheading'
+import { useFetchProduct } from '../hooks/useFetchProduct'
 function Product() {
 
     const params = useParams()
 
-    const { data, loading, error } = useFetch(`https://itx-frontend-test.onrender.com/api/product/${params.id}`, 'GET')
+    const { data, loading, error } = useFetchProduct(`https://itx-frontend-test.onrender.com/api/product/${params.id}`, 'GET')
 
 
 
     return (
-        <div>
+        <div className='lg:mt-6 mb-6'>
 
             {loading && (<PlaceholderProduct />)}
             {error && (<div>
@@ -25,12 +25,12 @@ function Product() {
                 <Largeheading>{data.brand} | {data.model}</Largeheading>
                 <div className='flex lg:flex-row flex-col'>
                     <div className="lg:w-2/5">
-                        <div className='p-2 sm: mb-4 rounded-lg bg-white w-fit'>
-                            <img className='h-80' src={data.imgUrl} alt={data.model} />
+                        <div className='p-2 mb-4 rounded-lg bg-white w-fit'>
+                            <img className='lg:h-80 h-40' src={data.imgUrl} alt={data.model} />
                         </div>
 
                     </div>
-                    <div className='lg:w-3/5 ps-4 border-s border-slate-100'>
+                    <div className='lg:w-3/5 ps-6 border-s border-slate-700'>
                         <ProductDescription product={data} />
                         <ProductActions product={data} />
                     </div>
