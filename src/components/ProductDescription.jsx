@@ -25,7 +25,7 @@ const ProductDescription = ({ product }) => {
 
     const descriptionItems = descriptionTitles.map((desc, i) => {
         if (product?.[desc.value]) {
-            return <li>{desc.title}: <span>{checkArray(product?.[desc.value])}</span></li>
+            return <li key={i}>{desc.title}: <span>{checkArray(product?.[desc.value])}</span></li>
         }
         return null
     })

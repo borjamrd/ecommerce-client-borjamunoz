@@ -9,7 +9,6 @@ function Product() {
     const params = useParams()
     const { data, loading, error } = useFetch(`https://itx-frontend-test.onrender.com/api/product/${params.id}`, 'GET')
 
-
     return (
         <div>
 

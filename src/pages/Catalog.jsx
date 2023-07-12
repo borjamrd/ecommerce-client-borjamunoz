@@ -6,15 +6,14 @@ import { useFetch } from '../hooks/useFecth'
 const Catalog = () => {
 
 
-    const { data, loading, error, handleCancelRequest } = useFetch('https://itx-frontend-test.onrender.com/api/product',)
-    console.log(data)
+    const { data, loading, error } = useFetch('https://itx-frontend-test.onrender.com/api/product',)
 
     return (
-        <div>
+        <>
             <Largeheading>Catalog</Largeheading>
             {loading && (<div>Loading</div>)}
             {error && (<div>Error</div>)}
-            {data ? data?.map((product, index) =>
+            {data && !loading ? data?.map((product, index) =>
             (
                 <ProductCard
                     key={product.id}
@@ -27,7 +26,7 @@ const Catalog = () => {
             )
             ) : <div>No hay productos que mostrar</div>}
 
-        </div>
+        </>
     )
 }
 
