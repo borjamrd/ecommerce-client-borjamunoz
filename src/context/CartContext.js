@@ -7,7 +7,6 @@ export const CartProvider = ({ children }) => {
     const [products, setProducts] = useState(storedProducts);
     const addToCart = (product) => {
         if (Array.isArray(product)) {
-
             updateProducts([...products, product])
         } else if (typeof product === 'object' && product !== null) {
             updateProducts([...products, product])

@@ -40,5 +40,5 @@ export function useUpdateCart() {
         }
     }
 
-    return { data, loading, error, handleCancelRequest, fetchData }
+    return { data, setData, loading, error, handleCancelRequest, fetchData }
 }

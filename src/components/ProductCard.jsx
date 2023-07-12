@@ -6,7 +6,7 @@ const ProductCard = ({ id, brand, model, price, imgUrl }) => {
         <div>
             <img src={imgUrl} alt={model} />
             <h4>{brand} | {model}</h4>
-            <span>{price}</span>
+            <span>{price && price + '€'}</span>
             <Link to={id}>See product</Link>
         </div>
     )
